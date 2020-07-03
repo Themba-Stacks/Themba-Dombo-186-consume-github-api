@@ -1,8 +1,8 @@
 function getPullRequest(owner,repoName,dateStarted,dateEnded){
     const axios = require('axios').default;
 
-    var startDate = new Date(dateStarted);  //"2020-01-15"
-    var endDate = new Date(dateEnded); //"2020-06-22"
+    var startDate = new Date(dateStarted);
+    var endDate = new Date(dateEnded);
     var pullRequestArray = [];
     axios.get(`https://api.github.com/repos/${owner}/${repoName}/pulls?state=all`)
         .then(function(response){

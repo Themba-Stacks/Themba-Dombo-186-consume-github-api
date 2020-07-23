@@ -8,9 +8,7 @@ function getPullRequest(owner,repoName,dateStarted,dateEnded){
         .then(function(response){
 
             for (const pullReq of response.data){
-                let body = pullReq.body;
-                let commitUrl = pullReq.commits_url;
-                
+                let body = pullReq.body;                
                 let createdAt = new Date(pullReq.created_at);
                 let updatedAt = new Date(pullReq.updated_at);
                 let mergedAt = new Date(pullReq.merged_at);
@@ -20,7 +18,7 @@ function getPullRequest(owner,repoName,dateStarted,dateEnded){
                 (updatedAt > startDate && updatedAt < endDate)||
                 (mergedAt > startDate && mergedAt < endDate)||
                 (closedAt > startDate && closedAt < endDate)) {
-                    pullRequestArray.push(body,commitUrl,createdAt,updatedAt,mergedAt,closedAt)
+                    pullRequestArray.push('Body: '+body,'Created: '+createdAt,'Updated: '+updatedAt,'Merged: '+mergedAt,'Closed: '+closedAt,'*******')
                 }
             }
         })
